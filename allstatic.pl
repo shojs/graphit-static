@@ -84,3 +84,4 @@ wm(\$all, '} </script>');
 
 wm(\$all, write_footer());
 print $all;
+1;
