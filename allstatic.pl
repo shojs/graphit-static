@@ -3,6 +3,8 @@
 use strict;
 use File::Find;
 
+my $basePath = "http://shojs.github.com/graphit-static";
+
 ##########
 # GLOBAL #
 ##########
@@ -26,7 +28,7 @@ sub write_header {
 <html>
 <head>
 <script type="text/javascript">
-var baseUrl = 'http://shojs.github.com/graphit-static';
+var baseUrl = '$basePath';
 function Casset_manager() {
 	if (!('_data' in Casset_manager))  {
 		Casset_manager._data = {};
