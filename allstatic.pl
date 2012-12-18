@@ -3,7 +3,7 @@
 use strict;
 use File::Find;
 
-my $basePath = "http://static-graphit.dev";
+my $basePath = "http://shojs.github.com/graphit-static/";
 
 ##########
 # GLOBAL #

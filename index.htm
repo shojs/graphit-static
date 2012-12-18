@@ -2,7 +2,7 @@
 <html>
 <head>
 <script type="text/javascript">
-var baseUrl = 'http://static-graphit.dev';
+var baseUrl = 'http://shojs.github.com/graphit-static/';
 function Casset_manager() {
     this.className = "CassetManager";
     if (!('_data' in Casset_manager))  {
@@ -547,65 +547,65 @@ manager.add({dir: "images/gimp/tools", file: "stock-tool-zoom-16.png"});
 manager.add({dir: "images/gimp/tools", file: "stock-tool-zoom-22.png"});
 var maxWidth = 200;
 function info(dir, file, src, img) {
-	var info = {
-		directory: dir,
-		fileName : file,
-		width: img.dataset.orignalWidth || img.width,
-		height: img.height, 
-	}
-	for (var k in info) {
-		img.setAttribute('data-' + k, info[k]);
-	}
-	return "";//JSON.stringify(info);
+    var info = {
+        directory: dir,
+        fileName : file,
+        width: img.dataset.orignalWidth || img.width,
+        height: img.height, 
+    }
+    for (var k in info) {
+        img.setAttribute('data-' + k, info[k]);
+    }
+    return "";//JSON.stringify(info);
 }
 manager.foreach(function(dir, file) {
     var src =  baseUrl + '/' + dir + '/' + file;
     var img = document.createElement('img');
     img.onload = function() {
-    	var str_info = info(dir, file, src, img);
+        var str_info = info(dir, file, src, img);
         img.setAttribute('alt', str_info);
         img.setAttribute('title', str_info);
         var g = document.createElement('div');
         var s = g.style;
         if (img.width > maxWidth) { 
-        	img.setAttribute('data-originalwidth', img.width); 
-        	img.width = maxWidth; 
+            img.setAttribute('data-originalwidth', img.width); 
+            img.width = maxWidth; 
         }
         var width = parseInt(img.dataset.originalwidth) || img.width;
         var height = img.height;
         s.display = 'inline';
         g.appendChild(img);
         g.onclick = function() {
-        	var wwidth = maxWidth + 100;
+            var wwidth = maxWidth + 100;
 
-        	if (width > maxWidth) { wwidth = width + 100; }
+            if (width > maxWidth) { wwidth = width + 100; }
             console.log(wwidth);
-        	var w = window.open('', 'AssetPreview', 'width='+wwidth+', height=' + (height + 100));
-        	console.log(w);
-        	var dw = w.document;
-        	var body = dw.body;
-        	body.innerHTML = '';
-        	var g = document.createElement('div');
-        	g.style.width = wwidth + 'px';
-        	g.style.textAlign = 'center';
+            var w = window.open('', 'AssetPreview', 'width='+wwidth+', height=' + (height + 100));
+            console.log(w);
+            var dw = w.document;
+            var body = dw.body;
+            body.innerHTML = '';
+            var g = document.createElement('div');
+            g.style.width = wwidth + 'px';
+            g.style.textAlign = 'center';
             g.style.marginX = 'auto';
-        	var img = document.createElement('img');
-        	img.src = src;
-        	if ('originalWidth' in img.dataset) {
-        		img.width = img.dataset.originalwidth;
-        	}
-        	img.setAttribute('alt', str_info);
-        	img.setAttribute('title', str_info);
-        	img.style.display = 'block';
-        	g.appendChild(img);
-        	g.appendChild(document.createTextNode(str_info));
-        	body.appendChild(g);
+            var img = document.createElement('img');
+            img.src = src;
+            if ('originalWidth' in img.dataset) {
+                img.width = img.dataset.originalwidth;
+            }
+            img.setAttribute('alt', str_info);
+            img.setAttribute('title', str_info);
+            img.style.display = 'block';
+            g.appendChild(img);
+            g.appendChild(document.createTextNode(str_info));
+            body.appendChild(g);
         }
         g.onmouseover = function() {
-        	this.style.backgroundColor = 'black';
+            this.style.backgroundColor = 'black';
         };
         g.onmouseout = function() {
-        	this.style.backgroundColor = 'white';
+            this.style.backgroundColor = 'white';
         };
         document.body.appendChild(g);
     };
@@ -617,4 +617,3 @@ document.body.appendChild(document.createTextNode(manager.to_s()));
 <body onload="run();">
 </body>
 </html>
-

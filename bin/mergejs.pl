@@ -20,7 +20,7 @@ my $fileName = "$1";
 print "Filename: $fileName\n";
 my $fout     = "$fileName.min.js";
 my $OPTIMIZATION = 'SIMPLE_OPTIMIZATIONS'; 
-#}my $OPTIMIZATION = 'ADVANCED_OPTIMIZATIONS --debug --externs js/jquery-1.8.3.js';
+#my $OPTIMIZATION = 'ADVANCED_OPTIMIZATIONS --debug --externs js/jquery-1.8.3.js js/main.js';
 my $COPT = "--compilation_level $OPTIMIZATION --language_in ECMASCRIPT5 ";
 my $bincomp = "java -jar $base_dir/google-compiler/closure-compiler.jar $COPT --js_output_file $fout";
 my $ls = '-' x 80 . "\n";
